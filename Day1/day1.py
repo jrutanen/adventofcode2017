@@ -1,5 +1,6 @@
 #This is code for the advent of code day one
 
+#Part one of the puzzle
 def CalculateSum(values):
 	sum = 0
 	if len(values) < 2:
@@ -13,6 +14,7 @@ def CalculateSum(values):
 				sum += int(values[i])
 	return sum
 
+#Part two of the puzzle
 def CalculateSumV2(values):
 	sum = 0
 	ahead = len(values)/2
