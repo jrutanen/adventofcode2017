@@ -2,14 +2,25 @@ def isAnagram(wordOne, wordTwo):
     if len(wordOne) != len(wordTwo):
         return False
 
-    match_count = 0
+    #build dictionary for letters and count of the letter
+    lettersOne = {}
+    lettersTwo = {}
     for letter in wordOne:
-        for l in wordTwo:
-            if letter == l:
-                match_count += 1
-    if match_count == len(wordOne):
+        if letter in lettersOne:
+           lettersOne[letter] += 1
+        else:
+            lettersOne[letter] = 1
+
+    for letter in wordTwo:
+        if letter in lettersTwo:
+            lettersTwo[letter] += 1
+        else:
+            lettersTwo[letter] = 1
+    #Compare dictionaries
+    if lettersOne == lettersTwo:
         return True
-    return False
+    else:
+        return False
 
 def isValidPassphrase(row):
     words = row.split(' ')
@@ -61,7 +72,7 @@ testrowTwo = "abcde xyz ecdab"
 testrowThree = "a ab abc abd abf abj"
 testrowFour = "iiii oiii ooii oooi oooo"
 testrowFive = "oiii ioii iioi iiio"
-tests = {testrowOne, testrowTwo, testrowThree, testrowFour, testrowFive}
+tests = [testrowOne, testrowTwo, testrowThree, testrowFour, testrowFive]
 
 for test in tests:
-    print(isValidPassphraseAnagram(test))
+    print(test + " is valid: " + str(isValidPassphraseAnagram(test)))
